@@ -1,0 +1,67 @@
+{
+  "actions": [],
+  "creation": "2025-01-07 18:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "phase",
+    "start_date",
+    "end_date",
+    "user",
+    "duration",
+    "comments"
+  ],
+  "fields": [
+    {
+      "fieldname": "phase",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Phase",
+      "options": "Planning\\nDesign\\nProduction\\nQuality Check\\nShipping\\nDelivered\\nCompleted",
+      "reqd": 1
+    },
+    {
+      "fieldname": "start_date",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "Start Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "end_date",
+      "fieldtype": "Datetime",
+      "label": "End Date"
+    },
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "User",
+      "options": "User"
+    },
+    {
+      "fieldname": "duration",
+      "fieldtype": "Duration",
+      "label": "Duration",
+      "read_only": 1
+    },
+    {
+      "fieldname": "comments",
+      "fieldtype": "Small Text",
+      "label": "Comments"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 1,
+  "links": [],
+  "modified": "2025-01-07 18:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Job Management",
+  "name": "Job Order Phase History",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}
