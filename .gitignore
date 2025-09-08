@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+venv/
+.venv
+*.egg-info/
+dist/
+build/
+
+# Frappe/ERPNext
+*.pyc
+.DS_Store
+*.swp
+*~
+.project
+.idea/
+.vscode/
+node_modules/
+*.log
+
+# Test files
+test_*.py
+*_test.py
+
+# Temporary files
+tmp/
+temp/
