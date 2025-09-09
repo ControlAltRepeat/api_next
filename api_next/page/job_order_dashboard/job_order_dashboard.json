@@ -1,0 +1,32 @@
+{
+ "creation": "2025-01-09 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-01-09 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "API Next",
+ "name": "job-order-dashboard",
+ "owner": "Administrator",
+ "page_name": "Job Order Dashboard",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Project Manager"
+  },
+  {
+   "role": "Operations Manager"
+  },
+  {
+   "role": "Estimator"
+  },
+  {
+   "role": "Field Supervisor"
+  }
+ ],
+ "standard": "Yes",
+ "system_page": 0,
+ "title": "Job Order Dashboard"
+}

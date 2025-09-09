@@ -1,0 +1,266 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:DEL-{delegator}-{delegatee}-{#####}",
+ "creation": "2025-09-09 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "delegation_details_section",
+  "delegator",
+  "delegator_name",
+  "column_break_1",
+  "delegatee",
+  "delegatee_name",
+  "delegation_scope_section",
+  "delegation_type",
+  "specific_roles",
+  "column_break_2",
+  "specific_doctypes",
+  "specific_documents",
+  "validity_section",
+  "start_date",
+  "end_date",
+  "column_break_3",
+  "is_active",
+  "auto_activate",
+  "conditions_section",
+  "delegation_reason",
+  "approval_conditions",
+  "column_break_4",
+  "escalation_rules",
+  "notification_settings"
+ ],
+ "fields": [
+  {
+   "fieldname": "delegation_details_section",
+   "fieldtype": "Section Break",
+   "label": "Delegation Details"
+  },
+  {
+   "fieldname": "delegator",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Delegator (From User)",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "delegator.full_name",
+   "fieldname": "delegator_name",
+   "fieldtype": "Data",
+   "label": "Delegator Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delegatee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Delegatee (To User)",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "delegatee.full_name",
+   "fieldname": "delegatee_name",
+   "fieldtype": "Data",
+   "label": "Delegatee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delegation_scope_section",
+   "fieldtype": "Section Break",
+   "label": "Delegation Scope"
+  },
+  {
+   "default": "Full Role",
+   "fieldname": "delegation_type",
+   "fieldtype": "Select",
+   "label": "Delegation Type",
+   "options": "Full Role\nSpecific DocTypes\nSpecific Documents\nApproval Only",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.delegation_type=='Full Role'",
+   "fieldname": "specific_roles",
+   "fieldtype": "Table MultiSelect",
+   "label": "Roles to Delegate",
+   "options": "Role"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.delegation_type=='Specific DocTypes'",
+   "fieldname": "specific_doctypes",
+   "fieldtype": "Table MultiSelect",
+   "label": "DocTypes to Delegate",
+   "options": "DocType"
+  },
+  {
+   "depends_on": "eval:doc.delegation_type=='Specific Documents'",
+   "fieldname": "specific_documents",
+   "fieldtype": "Text",
+   "label": "Specific Document Names (comma-separated)"
+  },
+  {
+   "fieldname": "validity_section",
+   "fieldtype": "Section Break",
+   "label": "Validity Period"
+  },
+  {
+   "default": "Today",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": 1,
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "default": 0,
+   "fieldname": "auto_activate",
+   "fieldtype": "Check",
+   "label": "Auto Activate on Start Date"
+  },
+  {
+   "fieldname": "conditions_section",
+   "fieldtype": "Section Break",
+   "label": "Conditions & Rules"
+  },
+  {
+   "fieldname": "delegation_reason",
+   "fieldtype": "Select",
+   "label": "Delegation Reason",
+   "options": "Vacation\nSick Leave\nBusiness Trip\nTraining\nWorkload Distribution\nEmergency\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approval_conditions",
+   "fieldtype": "Text",
+   "label": "Approval Conditions & Limits"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "escalation_rules",
+   "fieldtype": "Text",
+   "label": "Escalation Rules"
+  },
+  {
+   "default": "Email Delegator",
+   "fieldname": "notification_settings",
+   "fieldtype": "Select",
+   "label": "Notification Settings",
+   "options": "None\nEmail Delegator\nEmail Both\nEmail All Managers"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-09 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Permissions",
+ "name": "Role Delegation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "API Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Job Manager",
+   "write": 1,
+   "if_owner": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Estimator",
+   "write": 1,
+   "if_owner": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Planner",
+   "write": 1,
+   "if_owner": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Materials Coordinator",
+   "write": 1,
+   "if_owner": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Field Supervisor",
+   "write": 1,
+   "if_owner": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Quality Inspector",
+   "write": 1,
+   "if_owner": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Billing Clerk",
+   "write": 1,
+   "if_owner": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "states": []
+}

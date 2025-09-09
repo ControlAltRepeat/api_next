@@ -1,0 +1,266 @@
+[
+  {
+    "doctype": "Workflow",
+    "name": "Job Order Workflow",
+    "document_type": "Job Order",
+    "workflow_name": "Job Order 9-Phase Workflow",
+    "is_active": 1,
+    "send_email_alert": 1,
+    "workflow_state_field": "workflow_state",
+    "states": [
+      {
+        "state": "Submission",
+        "doc_status": "0",
+        "allow_edit": "Job Coordinator, Project Manager, System Manager",
+        "message": "Job order submitted and awaiting estimation",
+        "next_action_email_template": "",
+        "update_field": "",
+        "update_value": ""
+      },
+      {
+        "state": "Estimation",
+        "doc_status": "0",
+        "allow_edit": "Estimator, Project Manager, System Manager",
+        "message": "Creating cost and time estimates",
+        "next_action_email_template": "",
+        "update_field": "",
+        "update_value": ""
+      },
+      {
+        "state": "Client Approval",
+        "doc_status": "0",
+        "allow_edit": "Client, Sales Manager, Project Manager, System Manager",
+        "message": "Awaiting client approval of estimates",
+        "next_action_email_template": "",
+        "update_field": "",
+        "update_value": ""
+      },
+      {
+        "state": "Planning",
+        "doc_status": "0",
+        "allow_edit": "Project Manager, Resource Coordinator, System Manager",
+        "message": "Resource allocation and scheduling in progress",
+        "next_action_email_template": "",
+        "update_field": "",
+        "update_value": ""
+      },
+      {
+        "state": "Prework",
+        "doc_status": "0",
+        "allow_edit": "Project Manager, Site Supervisor, System Manager",
+        "message": "Preparation and material ordering in progress",
+        "next_action_email_template": "",
+        "update_field": "",
+        "update_value": ""
+      },
+      {
+        "state": "Execution",
+        "doc_status": "1",
+        "allow_edit": "Site Supervisor, Technician, Project Manager, System Manager",
+        "message": "Active job work in progress",
+        "next_action_email_template": "",
+        "update_field": "status",
+        "update_value": "In Progress"
+      },
+      {
+        "state": "Review",
+        "doc_status": "1",
+        "allow_edit": "Quality Inspector, Project Manager, System Manager",
+        "message": "Quality check and client review in progress",
+        "next_action_email_template": "",
+        "update_field": "",
+        "update_value": ""
+      },
+      {
+        "state": "Invoicing",
+        "doc_status": "1",
+        "allow_edit": "Billing Clerk, Accountant, Project Manager, System Manager",
+        "message": "Billing and payment processing in progress",
+        "next_action_email_template": "",
+        "update_field": "",
+        "update_value": ""
+      },
+      {
+        "state": "Closeout",
+        "doc_status": "1",
+        "allow_edit": "Project Manager, Document Controller, System Manager",
+        "message": "Final documentation and archiving in progress",
+        "next_action_email_template": "",
+        "update_field": "",
+        "update_value": ""
+      },
+      {
+        "state": "Archived",
+        "doc_status": "1",
+        "allow_edit": "System Manager",
+        "message": "Job order completed and archived",
+        "next_action_email_template": "",
+        "update_field": "status",
+        "update_value": "Completed"
+      },
+      {
+        "state": "Cancelled",
+        "doc_status": "2",
+        "allow_edit": "Project Manager, System Manager",
+        "message": "Job order cancelled",
+        "next_action_email_template": "",
+        "update_field": "status",
+        "update_value": "Cancelled"
+      }
+    ],
+    "transitions": [
+      {
+        "state": "Submission",
+        "action": "Request Estimation",
+        "next_state": "Estimation",
+        "allowed": "Job Coordinator, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Submission",
+        "action": "Cancel Job",
+        "next_state": "Cancelled",
+        "allowed": "Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Estimation",
+        "action": "Submit for Approval",
+        "next_state": "Client Approval",
+        "allowed": "Estimator, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Estimation",
+        "action": "Return to Submission",
+        "next_state": "Submission",
+        "allowed": "Estimator, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Client Approval",
+        "action": "Approve and Plan",
+        "next_state": "Planning",
+        "allowed": "Client, Sales Manager, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Client Approval",
+        "action": "Request Re-estimation",
+        "next_state": "Estimation",
+        "allowed": "Client, Sales Manager, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Client Approval",
+        "action": "Cancel Job",
+        "next_state": "Cancelled",
+        "allowed": "Client, Sales Manager, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Planning",
+        "action": "Start Prework",
+        "next_state": "Prework",
+        "allowed": "Project Manager, Resource Coordinator, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Planning",
+        "action": "Return for Re-approval",
+        "next_state": "Client Approval",
+        "allowed": "Project Manager, Resource Coordinator, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Prework",
+        "action": "Begin Execution",
+        "next_state": "Execution",
+        "allowed": "Project Manager, Site Supervisor, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Prework",
+        "action": "Return to Planning",
+        "next_state": "Planning",
+        "allowed": "Project Manager, Site Supervisor, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Execution",
+        "action": "Complete and Review",
+        "next_state": "Review",
+        "allowed": "Site Supervisor, Technician, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Execution",
+        "action": "Return to Prework",
+        "next_state": "Prework",
+        "allowed": "Site Supervisor, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Review",
+        "action": "Approve for Invoicing",
+        "next_state": "Invoicing",
+        "allowed": "Quality Inspector, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Review",
+        "action": "Return for Rework",
+        "next_state": "Execution",
+        "allowed": "Quality Inspector, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Invoicing",
+        "action": "Complete Invoicing",
+        "next_state": "Closeout",
+        "allowed": "Billing Clerk, Accountant, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Invoicing",
+        "action": "Return to Review",
+        "next_state": "Review",
+        "allowed": "Billing Clerk, Accountant, Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Closeout",
+        "action": "Archive Job",
+        "next_state": "Archived",
+        "allowed": "Project Manager, Document Controller, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      },
+      {
+        "state": "Cancelled",
+        "action": "Reactivate Job",
+        "next_state": "Submission",
+        "allowed": "Project Manager, System Manager",
+        "allow_self_approval": 0,
+        "condition": ""
+      }
+    ]
+  }
+]

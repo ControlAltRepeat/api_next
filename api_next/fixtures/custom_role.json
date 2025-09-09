@@ -1,0 +1,110 @@
+[
+ {
+  "doctype": "Role",
+  "name": "Job Manager",
+  "role_name": "Job Manager",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "Overall job oversight, approvals, and strategic decision making across all job phases"
+ },
+ {
+  "doctype": "Role",
+  "name": "Estimator",
+  "role_name": "Estimator",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "Creates and modifies job estimates, manages estimation phase activities and cost analysis"
+ },
+ {
+  "doctype": "Role",
+  "name": "Planner",
+  "role_name": "Planner",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "Resource allocation, scheduling, and planning phase management including equipment and labor coordination"
+ },
+ {
+  "doctype": "Role",
+  "name": "Materials Coordinator",
+  "role_name": "Materials Coordinator",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "Materials requisition, inventory management, procurement activities and vendor coordination"
+ },
+ {
+  "doctype": "Role",
+  "name": "Field Supervisor",
+  "role_name": "Field Supervisor",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "On-site execution phase management, labor tracking, and field operations oversight"
+ },
+ {
+  "doctype": "Role",
+  "name": "Quality Inspector",
+  "role_name": "Quality Inspector",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "Review phase activities, quality control inspections, and compliance verification"
+ },
+ {
+  "doctype": "Role",
+  "name": "Billing Clerk",
+  "role_name": "Billing Clerk",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "Invoicing, billing operations, financial documentation and payment processing"
+ },
+ {
+  "doctype": "Role",
+  "name": "API Employee",
+  "role_name": "API Employee",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "Basic employee access with read permissions for assigned jobs and time tracking capabilities"
+ },
+ {
+  "doctype": "Role",
+  "name": "API Manager",
+  "role_name": "API Manager",
+  "disabled": 0,
+  "desk_access": 1,
+  "is_custom": 1,
+  "home_page": "",
+  "restrict_to_domain": "",
+  "two_factor_auth": 0,
+  "description": "Senior management with comprehensive access to all modules, reports, and strategic planning functions"
+ }
+]

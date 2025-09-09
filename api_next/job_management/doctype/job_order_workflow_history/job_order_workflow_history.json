@@ -1,0 +1,176 @@
+{
+  "actions": [],
+  "allow_copy": 0,
+  "allow_events_in_timeline": 0,
+  "allow_guest_to_view": 0,
+  "allow_import": 0,
+  "allow_rename": 0,
+  "autoname": "field:name",
+  "creation": "2025-09-09 12:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "job_order",
+    "from_phase",
+    "to_phase",
+    "transition_date",
+    "column_break_1",
+    "user",
+    "user_role",
+    "duration_in_previous_phase",
+    "section_break_2",
+    "comment",
+    "additional_data",
+    "section_break_3",
+    "ip_address",
+    "user_agent"
+  ],
+  "fields": [
+    {
+      "fieldname": "job_order",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Job Order",
+      "options": "Job Order",
+      "reqd": 1
+    },
+    {
+      "fieldname": "from_phase",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "From Phase",
+      "options": "Submission\nEstimation\nClient Approval\nPlanning\nPrework\nExecution\nReview\nInvoicing\nCloseout\nArchived\nCancelled"
+    },
+    {
+      "fieldname": "to_phase",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "To Phase",
+      "options": "Submission\nEstimation\nClient Approval\nPlanning\nPrework\nExecution\nReview\nInvoicing\nCloseout\nArchived\nCancelled",
+      "reqd": 1
+    },
+    {
+      "fieldname": "transition_date",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "Transition Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "User",
+      "options": "User",
+      "reqd": 1
+    },
+    {
+      "fieldname": "user_role",
+      "fieldtype": "Data",
+      "label": "User Role",
+      "read_only": 1
+    },
+    {
+      "fieldname": "duration_in_previous_phase",
+      "fieldtype": "Duration",
+      "label": "Duration in Previous Phase",
+      "read_only": 1
+    },
+    {
+      "fieldname": "section_break_2",
+      "fieldtype": "Section Break",
+      "label": "Details"
+    },
+    {
+      "fieldname": "comment",
+      "fieldtype": "Text",
+      "label": "Comment"
+    },
+    {
+      "fieldname": "additional_data",
+      "fieldtype": "JSON",
+      "label": "Additional Data",
+      "read_only": 1
+    },
+    {
+      "fieldname": "section_break_3",
+      "fieldtype": "Section Break",
+      "label": "Audit Information"
+    },
+    {
+      "fieldname": "ip_address",
+      "fieldtype": "Data",
+      "label": "IP Address",
+      "read_only": 1
+    },
+    {
+      "fieldname": "user_agent",
+      "fieldtype": "Small Text",
+      "label": "User Agent",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "is_submittable": 0,
+  "links": [
+    {
+      "link_doctype": "Job Order",
+      "link_fieldname": "name"
+    }
+  ],
+  "modified": "2025-09-09 12:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Job Management",
+  "name": "Job Order Workflow History",
+  "naming_rule": "Expression",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 0
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Project Manager",
+      "share": 0,
+      "write": 0
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 0,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "sort_field": "transition_date",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1,
+  "track_seen": 1,
+  "track_views": 1
+}

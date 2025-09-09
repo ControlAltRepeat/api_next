@@ -1,0 +1,235 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2025-09-09 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "job_number_settings_section",
+  "job_number_format",
+  "reset_job_numbers_annually",
+  "column_break_1",
+  "last_job_number_reset",
+  "current_job_counter",
+  "default_values_section",
+  "default_job_priority",
+  "default_labor_rate",
+  "column_break_2",
+  "default_markup_percentage",
+  "default_tax_rate",
+  "notification_settings_section",
+  "enable_email_notifications",
+  "enable_sms_notifications",
+  "column_break_3",
+  "notification_digest_time",
+  "escalation_hours",
+  "system_settings_section",
+  "auto_archive_completed_jobs",
+  "archive_after_days",
+  "column_break_4",
+  "enable_audit_trail",
+  "require_approval_for_estimates_above",
+  "integration_settings_section",
+  "erpnext_integration_enabled",
+  "sync_customers_with_erpnext",
+  "column_break_5",
+  "sync_items_with_erpnext",
+  "accounting_dimension"
+ ],
+ "fields": [
+  {
+   "collapsible": 0,
+   "fieldname": "job_number_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Job Number Settings"
+  },
+  {
+   "default": "YY-XXX",
+   "fieldname": "job_number_format",
+   "fieldtype": "Select",
+   "label": "Job Number Format",
+   "options": "YY-XXX\nJOB-YY-XXXXX",
+   "reqd": 1
+  },
+  {
+   "default": 1,
+   "fieldname": "reset_job_numbers_annually",
+   "fieldtype": "Check",
+   "label": "Reset Job Numbers Annually"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_job_number_reset",
+   "fieldtype": "Date",
+   "label": "Last Job Number Reset",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_job_counter",
+   "fieldtype": "Int",
+   "label": "Current Job Counter",
+   "read_only": 1
+  },
+  {
+   "collapsible": 0,
+   "fieldname": "default_values_section",
+   "fieldtype": "Section Break",
+   "label": "Default Values"
+  },
+  {
+   "default": "Normal",
+   "fieldname": "default_job_priority",
+   "fieldtype": "Select",
+   "label": "Default Job Priority",
+   "options": "Low\nNormal\nHigh\nCritical"
+  },
+  {
+   "fieldname": "default_labor_rate",
+   "fieldtype": "Currency",
+   "label": "Default Labor Rate (per hour)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_markup_percentage",
+   "fieldtype": "Percent",
+   "label": "Default Markup Percentage"
+  },
+  {
+   "fieldname": "default_tax_rate",
+   "fieldtype": "Percent",
+   "label": "Default Tax Rate"
+  },
+  {
+   "collapsible": 0,
+   "fieldname": "notification_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Notification Settings"
+  },
+  {
+   "default": 1,
+   "fieldname": "enable_email_notifications",
+   "fieldtype": "Check",
+   "label": "Enable Email Notifications"
+  },
+  {
+   "default": 0,
+   "fieldname": "enable_sms_notifications",
+   "fieldtype": "Check",
+   "label": "Enable SMS Notifications"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Time when daily notification digests are sent",
+   "fieldname": "notification_digest_time",
+   "fieldtype": "Time",
+   "label": "Notification Digest Time"
+  },
+  {
+   "description": "Hours before escalating phases that are stuck",
+   "fieldname": "escalation_hours",
+   "fieldtype": "Int",
+   "label": "Escalation Hours"
+  },
+  {
+   "collapsible": 0,
+   "fieldname": "system_settings_section",
+   "fieldtype": "Section Break",
+   "label": "System Settings"
+  },
+  {
+   "fieldname": "auto_archive_completed_jobs",
+   "fieldtype": "Check",
+   "label": "Auto Archive Completed Jobs"
+  },
+  {
+   "depends_on": "auto_archive_completed_jobs",
+   "fieldname": "archive_after_days",
+   "fieldtype": "Int",
+   "label": "Archive After Days"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": 1,
+   "fieldname": "enable_audit_trail",
+   "fieldtype": "Check",
+   "label": "Enable Audit Trail"
+  },
+  {
+   "description": "Estimates above this amount require manager approval",
+   "fieldname": "require_approval_for_estimates_above",
+   "fieldtype": "Currency",
+   "label": "Require Approval for Estimates Above"
+  },
+  {
+   "collapsible": 0,
+   "fieldname": "integration_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Integration Settings"
+  },
+  {
+   "fieldname": "erpnext_integration_enabled",
+   "fieldtype": "Check",
+   "label": "ERPNext Integration Enabled"
+  },
+  {
+   "depends_on": "erpnext_integration_enabled",
+   "fieldname": "sync_customers_with_erpnext",
+   "fieldtype": "Check",
+   "label": "Sync Customers with ERPNext"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "erpnext_integration_enabled",
+   "fieldname": "sync_items_with_erpnext",
+   "fieldtype": "Check",
+   "label": "Sync Items with ERPNext"
+  },
+  {
+   "description": "Accounting dimension for financial tracking",
+   "fieldname": "accounting_dimension",
+   "fieldtype": "Data",
+   "label": "Accounting Dimension"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-09-09 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "API Next",
+ "name": "API Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

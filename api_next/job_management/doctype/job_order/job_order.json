@@ -17,6 +17,12 @@
   "priority",
   "start_date",
   "end_date",
+  "workflow_section",
+  "workflow_state",
+  "column_break_workflow",
+  "phase_start_date",
+  "phase_target_date",
+  "cancellation_reason",
   "description_section",
   "description",
   "scope_of_work",
@@ -99,6 +105,41 @@
    "fieldname": "end_date",
    "fieldtype": "Date",
    "label": "End Date"
+  },
+  {
+   "fieldname": "workflow_section",
+   "fieldtype": "Section Break",
+   "label": "Workflow Status"
+  },
+  {
+   "default": "Submission",
+   "fieldname": "workflow_state",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Phase",
+   "options": "Submission\nEstimation\nClient Approval\nPlanning\nPrework\nExecution\nReview\nInvoicing\nCloseout\nArchived\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_workflow",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phase_start_date",
+   "fieldtype": "Datetime",
+   "label": "Phase Start Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "phase_target_date",
+   "fieldtype": "Date",
+   "label": "Phase Target Date"
+  },
+  {
+   "depends_on": "eval:doc.workflow_state=='Cancelled'",
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Text",
+   "label": "Cancellation Reason"
   },
   {
    "fieldname": "description_section",

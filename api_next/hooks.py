@@ -25,8 +25,14 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/api_next/css/api_next.css"
-# app_include_js = "/assets/api_next/js/api_next.js"
+app_include_css = [
+	"/assets/api_next/css/job_dashboard.css"
+]
+app_include_js = [
+	"/assets/api_next/js/components/dashboard_utils.js",
+	"/assets/api_next/js/components/kanban_board.js",
+	"/assets/api_next/js/components/calendar_view.js"
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/api_next/css/api_next.css"
@@ -40,11 +46,17 @@ app_license = "mit"
 # webform_include_css = {"doctype": "public/css/doctype.css"}
 
 # include js in page
-# page_js = {"page" : "public/js/file.js"}
+page_js = {
+	"job-order-dashboard": "public/js/page/job_order_dashboard/job_order_dashboard.js"
+}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_js = {
+	"Job Material Requisition": "public/js/job_material_requisition.js"
+}
+doctype_list_js = {
+	"Job Material Requisition": "public/js/job_material_requisition_list.js"
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -83,7 +95,19 @@ app_license = "mit"
 # ------------
 
 # before_install = "api_next.install.before_install"
-# after_install = "api_next.install.after_install"
+# after_install = "api_next.permissions.setup.setup_api_next_permissions"
+
+# Fixtures
+# --------
+
+fixtures = [
+	{
+		"dt": "Page",
+		"filters": {
+			"name": ["in", ["job-order-dashboard"]]
+		}
+	}
+]
 
 # Uninstallation
 # ------------
@@ -117,13 +141,13 @@ app_license = "mit"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+permission_query_conditions = {
+	"Job Order": "api_next.permissions.role_manager.get_job_order_permission_query_conditions",
+}
+
+has_permission = {
+	"Job Order": "api_next.permissions.role_manager.has_job_order_permission",
+}
 
 # DocType Class
 # ---------------
@@ -137,34 +161,52 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Job Order": {
+		"validate": "api_next.permissions.field_permissions.validate_field_permissions_on_save",
+		"before_load": "api_next.permissions.field_permissions.apply_field_permissions_to_form"
+	},
+	"Job Order Material": {
+		"validate": "api_next.permissions.field_permissions.validate_field_permissions_on_save",
+		"before_load": "api_next.permissions.field_permissions.apply_field_permissions_to_form"
+	},
+	"Job Order Labor": {
+		"validate": "api_next.permissions.field_permissions.validate_field_permissions_on_save",
+		"before_load": "api_next.permissions.field_permissions.apply_field_permissions_to_form"
+	},
+	"Job Material Requisition": {
+		"validate": "api_next.permissions.field_permissions.validate_field_permissions_on_save",
+		"before_load": "api_next.permissions.field_permissions.apply_field_permissions_to_form"
+	},
+	# ERPNext Integration Events
+	"Material Request": {
+		"on_submit": "api_next.materials_management.utils.erpnext_integration.handle_material_request_update",
+		"on_update_after_submit": "api_next.materials_management.utils.erpnext_integration.handle_material_request_update",
+		"on_cancel": "api_next.materials_management.utils.erpnext_integration.handle_material_request_update"
+	},
+	"Purchase Order": {
+		"on_submit": "api_next.materials_management.utils.erpnext_integration.handle_purchase_order_update",
+		"on_update_after_submit": "api_next.materials_management.utils.erpnext_integration.handle_purchase_order_update"
+	},
+	"Stock Entry": {
+		"on_submit": "api_next.materials_management.utils.erpnext_integration.handle_stock_entry_submit"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"api_next.tasks.all"
-# 	],
-# 	"daily": [
-# 		"api_next.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"api_next.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"api_next.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"api_next.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"api_next.permissions.doctype.role_delegation.role_delegation.check_and_activate_delegations",
+		"api_next.permissions.doctype.role_delegation.role_delegation.check_and_deactivate_expired_delegations",
+		"api_next.materials_management.notifications.check_overdue_requisitions",
+		"api_next.materials_management.notifications.send_daily_summary"
+	],
+	"hourly": [
+		"api_next.materials_management.utils.erpnext_integration.schedule_recurring_sync"
+	]
+}
 
 # Testing
 # -------

@@ -1,0 +1,267 @@
+name: API_Next Test Suite
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_api_next
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libmysqlclient-dev \
+          libssl-dev \
+          libcurl4-openssl-dev \
+          libffi-dev \
+          libjpeg-dev \
+          libpng-dev \
+          zlib1g-dev \
+          wkhtmltopdf \
+          xvfb
+
+    - name: Install Frappe Bench
+      run: |
+        pip install frappe-bench
+        
+    - name: Initialize Frappe site
+      run: |
+        bench init --skip-redis-config-generation --frappe-branch version-15 ~/frappe-bench
+        cd ~/frappe-bench
+        
+        # Configure database
+        bench set-mariadb-host localhost
+        bench new-site test-site \
+          --mariadb-root-password root \
+          --admin-password admin \
+          --no-mariadb-socket
+        
+        # Get API_Next app
+        bench get-app api_next $GITHUB_WORKSPACE
+        bench --site test-site install-app api_next
+        
+    - name: Install test dependencies
+      run: |
+        cd ~/frappe-bench
+        pip install pytest pytest-cov pytest-mock pytest-asyncio factory-boy freezegun
+
+    - name: Run unit tests
+      run: |
+        cd ~/frappe-bench
+        bench --site test-site run-tests \
+          --app api_next \
+          --coverage \
+          --junit-xml-output \
+          --profile
+      continue-on-error: false
+
+    - name: Run pytest tests
+      run: |
+        cd ~/frappe-bench/apps/api_next
+        pytest \
+          --cov=api_next \
+          --cov-report=xml \
+          --cov-report=html \
+          --cov-report=term-missing \
+          --junit-xml=pytest-report.xml \
+          -v
+      env:
+        FRAPPE_SITE: test-site
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: api_next-coverage
+        fail_ci_if_error: false
+
+    - name: Archive test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: |
+          ~/frappe-bench/sites/test-site/logs/
+          pytest-report.xml
+          htmlcov/
+
+    - name: Archive coverage reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: |
+          coverage.xml
+          htmlcov/
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install ruff black isort
+
+    - name: Run Ruff linting
+      run: |
+        cd api_next
+        ruff check .
+
+    - name: Run Black formatting check
+      run: |
+        cd api_next
+        black --check .
+
+    - name: Run isort import sorting check
+      run: |
+        cd api_next
+        isort --check-only .
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install ESLint
+      run: |
+        npm install -g eslint
+
+    - name: Run ESLint on JavaScript
+      run: |
+        cd api_next
+        eslint public/js/**/*.js || true  # Don't fail on JS linting for now
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install security tools
+      run: |
+        pip install bandit safety
+
+    - name: Run Bandit security analysis
+      run: |
+        cd api_next
+        bandit -r . -f json -o bandit-report.json || true
+
+    - name: Run Safety check for vulnerabilities
+      run: |
+        pip freeze | safety check --json --output safety-report.json || true
+
+    - name: Archive security reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+          safety-report.json
+
+  performance:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_api_next
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libmysqlclient-dev
+
+    - name: Install Frappe and setup site
+      run: |
+        pip install frappe-bench
+        bench init --skip-redis-config-generation --frappe-branch version-15 ~/frappe-bench
+        cd ~/frappe-bench
+        bench new-site perf-site --mariadb-root-password root --admin-password admin --no-mariadb-socket
+        bench get-app api_next $GITHUB_WORKSPACE
+        bench --site perf-site install-app api_next
+
+    - name: Run performance tests
+      run: |
+        cd ~/frappe-bench/apps/api_next
+        pytest -m performance \
+          --benchmark-json=benchmark-results.json \
+          -v
+      env:
+        FRAPPE_SITE: perf-site
+
+    - name: Archive performance results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: performance-results
+        path: benchmark-results.json

@@ -1,1 +1,6 @@
-API NextJob Management
+API Next
+Job Management
+Materials Management
+Resource Management
+Human Resources
+Permissions
