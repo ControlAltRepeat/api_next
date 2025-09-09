@@ -1,0 +1,81 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"axVHnmzZwW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h2\\\">API Industrial Services ERP</span>\",\"col\":12}},{\"id\":\"Ap9zPaEGxn\",\"type\":\"paragraph\",\"data\":{\"text\":\"Field/Shop Services Management System\",\"col\":12}},{\"id\":\"aGhF8nBcXm\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"aNjK9pQrYz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Management\",\"col\":4}},{\"id\":\"aQrS2tUvWx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Materials Management\",\"col\":4}},{\"id\":\"aTuV4wXyZa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Resource Management\",\"col\":4}},{\"id\":\"aWxY5zAbCd\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"aZaB6cDeEf\",\"type\":\"card\",\"data\":{\"card_name\":\"Today's Summary\",\"col\":6}},{\"id\":\"aCdE7fGhHi\",\"type\":\"card\",\"data\":{\"card_name\":\"Key Metrics\",\"col\":6}}]",
+ "creation": "2025-01-09 13:48:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "octicon octicon-tools",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "API Next",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Job Orders",
+   "link_count": 0,
+   "link_to": "Job Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Material Requisitions",
+   "link_count": 0,
+   "link_to": "Job Material Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employees",
+   "link_count": 0,
+   "link_to": "Employee",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-01-09 13:48:00.000000",
+ "modified_by": "Administrator",
+ "module": "API Next",
+ "name": "API Next",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "Workspace",
+   "label": "Job Management",
+   "link_to": "Job Management",
+   "type": "Page"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "Workspace",
+   "label": "Materials Management",
+   "link_to": "Materials Management",
+   "type": "Page"
+  },
+  {
+   "color": "Green",
+   "doc_view": "Workspace",
+   "label": "Resource Management",
+   "link_to": "Resource Management",
+   "type": "Page"
+  }
+ ],
+ "title": "API Next"
+}

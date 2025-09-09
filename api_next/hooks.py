@@ -1,9 +1,12 @@
 app_name = "api_next"
-app_title = "API Next"
-app_publisher = "API Next"
-app_description = "Job Management System"
-app_email = "api_next@example.com"
-app_license = "mit"
+app_title = "API Industrial Services"
+app_publisher = "API Industrial Services Inc."
+app_description = "Field/Shop Services ERP System"
+app_email = "support@api-industrial.com"
+app_license = "Proprietary"
+app_icon = "octicon octicon-tools"
+app_color = "#1E4A8B"
+app_logo_url = "/assets/api_next/images/logo.png"
 
 # Apps
 # ------------------
@@ -26,7 +29,8 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 app_include_css = [
-	"/assets/api_next/css/job_dashboard.css"
+	"/assets/api_next/css/job_dashboard.css",
+	"/assets/api_next/css/custom_branding.css"
 ]
 app_include_js = [
 	"/assets/api_next/js/components/dashboard_utils.js",

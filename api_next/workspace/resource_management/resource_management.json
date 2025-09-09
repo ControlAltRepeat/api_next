@@ -1,0 +1,81 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"rxVHnmzZwW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Resource Management</span>\",\"col\":12}},{\"id\":\"Rp9zPaEGxn\",\"type\":\"paragraph\",\"data\":{\"text\":\"Manage equipment, vehicles, and human resources\",\"col\":12}},{\"id\":\"rGhF8nBcXm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employees\",\"col\":3}},{\"id\":\"rNjK9pQrYz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Equipment\",\"col\":3}},{\"id\":\"rQrS2tUvWx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicles\",\"col\":3}},{\"id\":\"rTuV4wXyZa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Schedule\",\"col\":3}},{\"id\":\"rWxY5zAbCd\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"rZaB6cDeEf\",\"type\":\"card\",\"data\":{\"card_name\":\"Resource Utilization\",\"col\":4}},{\"id\":\"rCdE7fGhHi\",\"type\":\"card\",\"data\":{\"card_name\":\"Availability\",\"col\":4}},{\"id\":\"rFgH8iJkLm\",\"type\":\"card\",\"data\":{\"card_name\":\"Maintenance Schedule\",\"col\":4}}]",
+ "creation": "2025-01-09 13:47:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "users",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Resource Management",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employees",
+   "link_count": 0,
+   "link_to": "Employee",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Equipment",
+   "link_count": 0,
+   "link_to": "Job Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Schedule",
+   "link_count": 0,
+   "link_to": "Job Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-01-09 13:47:00.000000",
+ "modified_by": "Administrator",
+ "module": "Resource Management",
+ "name": "Resource Management",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 12.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Employees",
+   "link_to": "Employee",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Equipment",
+   "link_to": "Job Order",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "Calendar",
+   "label": "Schedule",
+   "link_to": "Job Order",
+   "type": "DocType"
+  }
+ ],
+ "title": "Resource Management"
+}

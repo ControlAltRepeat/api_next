@@ -1,0 +1,275 @@
+/* API Industrial Services - Custom Branding CSS */
+
+/* ============================================
+   Brand Colors & Variables
+   ============================================ */
+:root {
+    --api-primary: #1E4A8B;
+    --api-secondary: #F39C12;
+    --api-dark: #0A2454;
+    --api-light: #E8F4F8;
+    --api-success: #27AE60;
+    --api-warning: #F39C12;
+    --api-danger: #E74C3C;
+}
+
+/* Override Frappe default colors */
+.navbar {
+    background-color: var(--api-primary) !important;
+}
+
+/* ============================================
+   Navbar Customization
+   ============================================ */
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-right: 1rem;
+}
+
+/* Hide default Frappe logo */
+.navbar .navbar-brand img[src*="frappe"],
+.navbar .navbar-brand svg {
+    display: none !important;
+}
+
+/* Custom logo in navbar - slightly larger */
+.navbar .navbar-brand::before {
+    content: '';
+    display: inline-block;
+    width: 165px;
+    height: 40px;
+    background-image: url('/assets/api_next/images/navbar-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+/* Add company name after logo */
+.navbar .navbar-brand::after {
+    content: 'API Industrial Services';
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+    margin-left: 10px;
+    display: none; /* Hidden by default, show on larger screens */
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-brand::after {
+        display: inline-block;
+    }
+}
+
+/* Hide duplicate app logo */
+.app-logo {
+    display: none !important;
+}
+
+/* ============================================
+   Login Page Customization
+   ============================================ */
+.login-body {
+    background: linear-gradient(135deg, var(--api-primary) 0%, var(--api-dark) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Login card styling */
+.login-content .login-card {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Custom logo on login page */
+.login-content .logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-content .logo img {
+    display: none; /* Hide default logo */
+}
+
+.login-content .logo::before {
+    content: '';
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    background-image: url('/assets/api_next/images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Custom login title */
+.login-content h4.text-center {
+    color: var(--api-primary);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* Login button customization */
+.login-content .btn-primary {
+    background-color: var(--api-primary);
+    border-color: var(--api-primary);
+}
+
+.login-content .btn-primary:hover {
+    background-color: var(--api-dark);
+    border-color: var(--api-dark);
+}
+
+/* ============================================
+   Splash Screen Customization
+   ============================================ */
+.splash-screen {
+    background-color: var(--api-primary);
+}
+
+.splash-screen .logo {
+    width: 300px;
+    height: 100px;
+    background-image: url('/assets/api_next/images/splash.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.splash-screen .logo img {
+    display: none;
+}
+
+.splash-screen .message {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+/* ============================================
+   Desk Customization
+   ============================================ */
+
+/* Module colors */
+.desk-page .module-box[data-module-name="Job Management"] {
+    background-color: var(--api-primary);
+}
+
+.desk-page .module-box[data-module-name="Materials Management"] {
+    background-color: var(--api-secondary);
+}
+
+.desk-page .module-box[data-module-name="Resource Management"] {
+    background-color: var(--api-success);
+}
+
+/* Workspace sidebar branding */
+.workspace-sidebar .sidebar-item[data-name="Job Management"] .sidebar-icon {
+    color: var(--api-primary);
+}
+
+/* ============================================
+   Footer Customization
+   ============================================ */
+
+/* Hide "Powered by Frappe" */
+.footer-powered-by,
+.login-footer,
+.web-footer .text-muted:contains("Frappe") {
+    display: none !important;
+}
+
+/* Custom footer */
+.web-footer::after,
+.login-content::after {
+    content: "© 2025 API Industrial Services Inc. All rights reserved.";
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-top: 2rem;
+}
+
+/* ============================================
+   Print Format Customization
+   ============================================ */
+@media print {
+    .print-heading img {
+        display: none;
+    }
+    
+    .print-heading::before {
+        content: '';
+        display: block;
+        width: 200px;
+        height: 60px;
+        background-image: url('/assets/api_next/images/logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-bottom: 1rem;
+    }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+[data-theme="dark"] {
+    --api-primary: #2E5A9E;
+    --api-light: #1A1A2E;
+}
+
+[data-theme="dark"] .navbar .navbar-brand::before {
+    background-image: url('/assets/api_next/images/logo-dark.png');
+}
+
+/* ============================================
+   Mobile Responsiveness
+   ============================================ */
+@media (max-width: 767px) {
+    .navbar .navbar-brand::before {
+        width: 120px;
+        height: 30px;
+    }
+    
+    .login-content .logo::before {
+        width: 180px;
+        height: 60px;
+    }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-content .logo {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--api-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--api-primary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--api-dark);
+}

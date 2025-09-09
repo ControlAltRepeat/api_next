@@ -1,0 +1,81 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"mxVHnmzZwW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Materials Management</span>\",\"col\":12}},{\"id\":\"Mp9zPaEGxn\",\"type\":\"paragraph\",\"data\":{\"text\":\"Manage material requisitions, inventory, and procurement\",\"col\":12}},{\"id\":\"mGhF8nBcXm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Material Requisitions\",\"col\":3}},{\"id\":\"mNjK9pQrYz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inventory Items\",\"col\":3}},{\"id\":\"mQrS2tUvWx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Orders\",\"col\":3}},{\"id\":\"mTuV4wXyZa\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"mWxY5zAbCd\",\"type\":\"card\",\"data\":{\"card_name\":\"Material Tracking\",\"col\":4}},{\"id\":\"mZaB6cDeEf\",\"type\":\"card\",\"data\":{\"card_name\":\"Inventory Status\",\"col\":4}},{\"id\":\"mCdE7fGhHi\",\"type\":\"card\",\"data\":{\"card_name\":\"Procurement Analytics\",\"col\":4}}]",
+ "creation": "2025-01-09 13:46:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "package",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Materials Management",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Material Requisitions",
+   "link_count": 0,
+   "link_to": "Job Material Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Items",
+   "link_count": 0,
+   "link_to": "Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Warehouses",
+   "link_count": 0,
+   "link_to": "Warehouse",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-01-09 13:46:00.000000",
+ "modified_by": "Administrator",
+ "module": "Materials Management",
+ "name": "Materials Management",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 11.0,
+ "shortcuts": [
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Material Requisitions",
+   "link_to": "Job Material Requisition",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Inventory Items",
+   "link_to": "Item",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Warehouses",
+   "link_to": "Warehouse",
+   "type": "DocType"
+  }
+ ],
+ "title": "Materials Management"
+}

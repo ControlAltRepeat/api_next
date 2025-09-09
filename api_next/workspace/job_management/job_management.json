@@ -1,0 +1,81 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"jxVHnmzZwW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Job Management</span>\",\"col\":12}},{\"id\":\"Wp9zPaEGxn\",\"type\":\"paragraph\",\"data\":{\"text\":\"Manage job orders, phases, and workflow transitions\",\"col\":12}},{\"id\":\"kGhF8nBcXm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Orders\",\"col\":3}},{\"id\":\"mNjK9pQrYz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Active Jobs\",\"col\":3}},{\"id\":\"pQrS2tUvWx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Reports\",\"col\":3}},{\"id\":\"rTuV4wXyZa\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"uWxY5zAbCd\",\"type\":\"card\",\"data\":{\"card_name\":\"Job Tracking\",\"col\":4}},{\"id\":\"xZaB6cDeEf\",\"type\":\"card\",\"data\":{\"card_name\":\"Phase Management\",\"col\":4}},{\"id\":\"aCdE7fGhHi\",\"type\":\"card\",\"data\":{\"card_name\":\"Job Analytics\",\"col\":4}}]",
+ "creation": "2025-01-09 13:45:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "tool",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Job Management",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Job Orders",
+   "link_count": 0,
+   "link_to": "Job Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Active Jobs",
+   "link_count": 0,
+   "link_to": "Job Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Job Reports",
+   "link_count": 0,
+   "link_to": "Job Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-01-09 13:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "Job Management",
+ "name": "Job Management",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 10.0,
+ "shortcuts": [
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Job Orders",
+   "link_to": "Job Order",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Active Jobs",
+   "link_to": "Job Order",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "Report",
+   "label": "Job Reports",
+   "link_to": "Job Order",
+   "type": "DocType"
+  }
+ ],
+ "title": "Job Management"
+}
