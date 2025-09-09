@@ -6,7 +6,7 @@ from frappe.model.document import Document
 from frappe.model.naming import make_autoname
 from frappe.utils import now_datetime, nowdate
 from datetime import datetime
-from api_next.workflows.job_order_workflow import JobOrderWorkflow
+from api_next.job_management.workflow.job_order_workflow import JobOrderWorkflow
 from api_next.workflows.business_rules_engine import BusinessRulesEngine
 
 class JobOrder(Document):
@@ -101,7 +101,8 @@ class JobOrder(Document):
         new_state = self.workflow_state
         
         if old_state and old_state != new_state:
-            validation = JobOrderWorkflow.validate_transition(self, old_state, new_state)
+            workflow = JobOrderWorkflow()
+            validation = workflow.validate_transition(self, old_state, new_state)
             if not validation["valid"]:
                 frappe.throw(validation["message"])
     
@@ -190,10 +191,11 @@ class JobOrder(Document):
     def transition_workflow(self, new_state, comment=None):
         """API method to transition workflow state."""
         try:
-            current_state = self.workflow_state or "Submission"
+            current_state = self.workflow_state or "SUBMISSION"
             
             # Execute workflow transition
-            result = JobOrderWorkflow.execute_transition(self, new_state, comment=comment)
+            workflow = JobOrderWorkflow()
+            result = workflow.execute_transition(self, new_state, comment=comment)
             
             if result["success"]:
                 # Reload the document to get updated state
@@ -220,14 +222,8 @@ class JobOrder(Document):
     @frappe.whitelist()
     def get_workflow_info(self):
         """Get workflow information including valid transitions."""
-        current_state = self.workflow_state or "Submission"
-        
-        return {
-            "current_state": current_state,
-            "valid_transitions": JobOrderWorkflow.get_valid_transitions(current_state),
-            "phase_config": JobOrderWorkflow.get_phase_config(current_state),
-            "workflow_history": self._get_workflow_history()
-        }
+        workflow = JobOrderWorkflow()
+        return workflow.get_workflow_info(self)
     
     def _get_workflow_history(self):
         """Get workflow transition history for this job order."""
@@ -241,21 +237,5 @@ class JobOrder(Document):
     @frappe.whitelist()
     def get_phase_summary(self):
         """Get summary of all phases and their status."""
-        phases = []
-        
-        for phase_name, config in JobOrderWorkflow.PHASES.items():
-            phase_order = config.get("phase_order", 0)
-            if phase_order > 0:  # Exclude special states like Cancelled
-                phases.append({
-                    "name": phase_name,
-                    "order": phase_order,
-                    "is_current": phase_name == self.workflow_state,
-                    "is_completed": phase_order < JobOrderWorkflow.PHASES.get(self.workflow_state, {}).get("phase_order", 0),
-                    "required_fields": config.get("required_fields", []),
-                    "permissions": config.get("permissions", {})
-                })
-        
-        # Sort by phase order
-        phases.sort(key=lambda x: x["order"])
-        
-        return phases
+        workflow = JobOrderWorkflow()
+        return workflow.get_phase_summary(self)

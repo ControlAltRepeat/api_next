@@ -1,0 +1,492 @@
+{
+  "test_scenarios": {
+    "minimal_job_order": {
+      "doctype": "Job Order",
+      "job_title": "Minimal Test Job",
+      "customer_name": "Test Customer Ltd",
+      "project_name": "Minimal Test Project",
+      "job_type": "Millwright",
+      "description": "Basic job order for minimal testing",
+      "priority": "Medium",
+      "workflow_state": "Submission"
+    },
+    
+    "complete_job_order": {
+      "doctype": "Job Order",
+      "job_title": "Complete Integration Test Job",
+      "customer_name": "Industrial Client Corp",
+      "project_name": "Complete Manufacturing Overhaul",
+      "job_type": "Millwright",
+      "description": "Comprehensive job order with all required fields for complete workflow testing",
+      "priority": "High",
+      "workflow_state": "Submission",
+      "scope_of_work": "Complete millwright services including equipment installation, alignment, maintenance, and repair work",
+      "start_date": "2025-01-15 08:00:00",
+      "end_date": "2025-02-15 17:00:00",
+      "estimated_start_date": "2025-01-15 08:00:00", 
+      "estimated_completion_date": "2025-02-15 17:00:00",
+      "total_material_cost": 15000.00,
+      "total_labor_cost": 8000.00,
+      "total_labor_hours": 160.0,
+      "risk_level": "Medium",
+      "project_manager": "Administrator",
+      "material_requisitions": [
+        {
+          "item": "BEARING-001",
+          "description": "High-grade industrial bearing",
+          "quantity": 4,
+          "rate": 500.00,
+          "amount": 2000.00,
+          "required_date": "2025-01-10",
+          "status": "Pending"
+        },
+        {
+          "item": "STEEL-PLATE-001", 
+          "description": "Steel plate for structural support",
+          "quantity": 10,
+          "rate": 150.00,
+          "amount": 1500.00,
+          "required_date": "2025-01-12",
+          "status": "Pending"
+        },
+        {
+          "item": "WELDING-ROD-001",
+          "description": "Premium welding rods",
+          "quantity": 50,
+          "rate": 25.00,
+          "amount": 1250.00,
+          "required_date": "2025-01-14",
+          "status": "Pending"
+        }
+      ],
+      "labor_entries": [
+        {
+          "employee": "EMP-TECH-001",
+          "employee_name": "John Smith",
+          "skill_level": "Senior Technician",
+          "hours_estimated": 80.0,
+          "hours_actual": 0.0,
+          "rate": 45.00,
+          "amount": 3600.00,
+          "start_date": "2025-01-15 08:00:00",
+          "status": "Scheduled"
+        },
+        {
+          "employee": "EMP-TECH-002",
+          "employee_name": "Maria Garcia",
+          "skill_level": "Millwright Specialist",
+          "hours_estimated": 60.0,
+          "hours_actual": 0.0,
+          "rate": 50.00,
+          "amount": 3000.00,
+          "start_date": "2025-01-16 08:00:00",
+          "status": "Scheduled"
+        },
+        {
+          "employee": "EMP-TECH-003",
+          "employee_name": "David Wilson", 
+          "skill_level": "Welder",
+          "hours_estimated": 40.0,
+          "hours_actual": 0.0,
+          "rate": 40.00,
+          "amount": 1600.00,
+          "start_date": "2025-01-18 08:00:00",
+          "status": "Scheduled"
+        }
+      ],
+      "team_members": [
+        {
+          "employee": "EMP-TECH-001",
+          "employee_name": "John Smith",
+          "role": "Team Lead"
+        },
+        {
+          "employee": "EMP-TECH-002", 
+          "employee_name": "Maria Garcia",
+          "role": "Lead Millwright"
+        },
+        {
+          "employee": "EMP-TECH-003",
+          "employee_name": "David Wilson",
+          "role": "Welder"
+        }
+      ],
+      "documents": [
+        {
+          "document": "Work Order Specification",
+          "file_url": "/files/work_order_spec_v1.pdf",
+          "upload_date": "2025-01-05"
+        },
+        {
+          "document": "Safety Requirements",
+          "file_url": "/files/safety_requirements.pdf", 
+          "upload_date": "2025-01-05"
+        },
+        {
+          "document": "Equipment Drawings",
+          "file_url": "/files/equipment_drawings.pdf",
+          "upload_date": "2025-01-06"
+        }
+      ]
+    },
+
+    "urgent_job_order": {
+      "doctype": "Job Order",
+      "job_title": "Emergency Equipment Repair",
+      "customer_name": "Emergency Services Ltd",
+      "project_name": "Critical Production Line Repair",
+      "job_type": "Emergency Repair",
+      "description": "Urgent repair of critical production equipment to minimize downtime",
+      "priority": "Urgent",
+      "workflow_state": "Submission",
+      "scope_of_work": "Emergency repair of conveyor system bearing failure causing production shutdown",
+      "start_date": "2025-01-10 06:00:00",
+      "end_date": "2025-01-11 22:00:00",
+      "risk_level": "High",
+      "total_material_cost": 3000.00,
+      "total_labor_cost": 2000.00,
+      "total_labor_hours": 16.0,
+      "material_requisitions": [
+        {
+          "item": "EMERGENCY-BEARING-001",
+          "description": "Emergency replacement bearing",
+          "quantity": 2,
+          "rate": 750.00,
+          "amount": 1500.00,
+          "required_date": "2025-01-10",
+          "status": "Urgent"
+        }
+      ],
+      "labor_entries": [
+        {
+          "employee": "EMP-EMERGENCY-001",
+          "employee_name": "Emergency Tech 1",
+          "skill_level": "Emergency Response Tech",
+          "hours_estimated": 16.0,
+          "rate": 75.00,
+          "amount": 1200.00,
+          "overtime_rate": 112.50,
+          "status": "On Call"
+        }
+      ]
+    },
+
+    "cancelled_job_order": {
+      "doctype": "Job Order",
+      "job_title": "Cancelled Project",
+      "customer_name": "Former Client Inc",
+      "project_name": "Cancelled Manufacturing Project",
+      "job_type": "Millwright",
+      "description": "Job order that was cancelled during planning phase",
+      "priority": "Medium",
+      "workflow_state": "Cancelled",
+      "cancellation_reason": "Client budget constraints and project scope changes",
+      "cancellation_date": "2025-01-08 14:30:00",
+      "cancelled_by": "project.manager@test.com",
+      "total_material_cost": 5000.00,
+      "total_labor_cost": 3000.00
+    },
+
+    "long_running_job_order": {
+      "doctype": "Job Order", 
+      "job_title": "Large Scale Plant Overhaul",
+      "customer_name": "Major Industrial Corp",
+      "project_name": "Annual Plant Maintenance Overhaul",
+      "job_type": "Plant Maintenance",
+      "description": "Comprehensive plant overhaul including multiple systems and equipment",
+      "priority": "High",
+      "workflow_state": "Planning",
+      "scope_of_work": "Complete plant overhaul including conveyor systems, HVAC, electrical, and mechanical systems",
+      "start_date": "2025-02-01 07:00:00",
+      "end_date": "2025-04-30 18:00:00",
+      "total_material_cost": 75000.00,
+      "total_labor_cost": 45000.00,
+      "total_labor_hours": 800.0,
+      "risk_level": "High",
+      "material_requisitions": [
+        {
+          "item": "CONVEYOR-BELT-001",
+          "description": "Heavy duty conveyor belt system",
+          "quantity": 3,
+          "rate": 8000.00,
+          "amount": 24000.00,
+          "required_date": "2025-01-25"
+        },
+        {
+          "item": "MOTOR-ASSEMBLY-001",
+          "description": "Industrial motor assembly",
+          "quantity": 6,
+          "rate": 5000.00,
+          "amount": 30000.00,
+          "required_date": "2025-01-28"
+        }
+      ],
+      "labor_entries": [
+        {
+          "employee": "EMP-PM-001",
+          "employee_name": "Senior Project Manager",
+          "skill_level": "Project Manager",
+          "hours_estimated": 200.0,
+          "rate": 75.00,
+          "amount": 15000.00
+        },
+        {
+          "employee": "EMP-MILL-001",
+          "employee_name": "Lead Millwright",
+          "skill_level": "Lead Millwright",
+          "hours_estimated": 300.0,
+          "rate": 55.00,
+          "amount": 16500.00
+        }
+      ]
+    }
+  },
+
+  "workflow_test_data": {
+    "phase_transitions": [
+      {
+        "from_phase": "Submission",
+        "to_phase": "Estimation",
+        "required_roles": ["Job Coordinator", "Project Manager", "System Manager"],
+        "required_fields": ["customer_name", "project_name", "job_type", "start_date", "description"],
+        "validation_rules": ["validate_basic_info", "check_customer_credit"]
+      },
+      {
+        "from_phase": "Estimation", 
+        "to_phase": "Client Approval",
+        "required_roles": ["Estimator", "Project Manager", "System Manager"],
+        "required_fields": ["scope_of_work", "material_requisitions", "labor_entries"],
+        "validation_rules": ["validate_estimates", "check_material_availability"]
+      },
+      {
+        "from_phase": "Client Approval",
+        "to_phase": "Planning",
+        "required_roles": ["Client", "Sales Manager", "Project Manager", "System Manager"],
+        "required_fields": ["total_material_cost", "total_labor_cost"],
+        "validation_rules": ["validate_client_approval", "check_contract_terms"],
+        "escalation_timeout_days": 7,
+        "escalation_roles": ["Sales Manager", "Project Manager"]
+      },
+      {
+        "from_phase": "Planning",
+        "to_phase": "Prework", 
+        "required_roles": ["Project Manager", "Resource Coordinator", "System Manager"],
+        "required_fields": ["team_members", "start_date", "end_date"],
+        "validation_rules": ["validate_resource_availability", "check_schedule_conflicts"]
+      },
+      {
+        "from_phase": "Prework",
+        "to_phase": "Execution",
+        "required_roles": ["Project Manager", "Site Supervisor", "System Manager"],
+        "required_fields": ["material_requisitions", "team_members"],
+        "validation_rules": ["validate_material_orders", "check_permits", "verify_equipment_availability"]
+      },
+      {
+        "from_phase": "Execution",
+        "to_phase": "Review",
+        "required_roles": ["Site Supervisor", "Technician", "Project Manager", "System Manager"],
+        "required_fields": ["labor_entries"],
+        "validation_rules": ["validate_work_completion", "check_quality_standards"]
+      },
+      {
+        "from_phase": "Review",
+        "to_phase": "Invoicing",
+        "required_roles": ["Quality Inspector", "Project Manager", "System Manager"], 
+        "required_fields": ["total_labor_hours", "total_material_cost"],
+        "validation_rules": ["validate_quality_standards", "client_sign_off"]
+      },
+      {
+        "from_phase": "Invoicing",
+        "to_phase": "Closeout",
+        "required_roles": ["Billing Clerk", "Accountant", "Project Manager", "System Manager"],
+        "required_fields": ["total_material_cost", "total_labor_cost"],
+        "validation_rules": ["validate_billing_amounts", "check_payment_terms"]
+      },
+      {
+        "from_phase": "Closeout",
+        "to_phase": "Archived",
+        "required_roles": ["Project Manager", "Document Controller", "System Manager"],
+        "required_fields": ["documents", "total_labor_hours", "total_material_cost", "total_labor_cost"],
+        "validation_rules": ["validate_documentation", "confirm_payment_received"]
+      }
+    ],
+
+    "backward_transitions": [
+      {"from_phase": "Estimation", "to_phase": "Submission", "reason": "Insufficient information"},
+      {"from_phase": "Client Approval", "to_phase": "Estimation", "reason": "Estimate revision required"},
+      {"from_phase": "Planning", "to_phase": "Client Approval", "reason": "Scope change approval needed"},
+      {"from_phase": "Prework", "to_phase": "Planning", "reason": "Resource reallocation needed"},
+      {"from_phase": "Execution", "to_phase": "Prework", "reason": "Additional preparation required"},
+      {"from_phase": "Review", "to_phase": "Execution", "reason": "Rework required"},
+      {"from_phase": "Invoicing", "to_phase": "Review", "reason": "Billing discrepancy"}
+    ],
+
+    "cancellation_scenarios": [
+      {
+        "from_phase": "Submission",
+        "cancellation_reason": "Customer withdrew request",
+        "can_reactivate": true
+      },
+      {
+        "from_phase": "Estimation",
+        "cancellation_reason": "Budget constraints",
+        "can_reactivate": true
+      },
+      {
+        "from_phase": "Client Approval", 
+        "cancellation_reason": "Client rejected proposal",
+        "can_reactivate": false
+      },
+      {
+        "from_phase": "Planning",
+        "cancellation_reason": "Resource unavailability",
+        "can_reactivate": true
+      },
+      {
+        "from_phase": "Execution",
+        "cancellation_reason": "Safety concerns", 
+        "can_reactivate": false,
+        "requires_approval": true
+      }
+    ]
+  },
+
+  "test_users": {
+    "system_manager": {
+      "email": "system.manager@test.com",
+      "roles": ["System Manager"],
+      "can_access_all_phases": true
+    },
+    "project_manager": {
+      "email": "project.manager@test.com", 
+      "roles": ["Project Manager", "Employee"],
+      "accessible_phases": ["Submission", "Estimation", "Client Approval", "Planning", "Prework", "Execution", "Review", "Invoicing", "Closeout"]
+    },
+    "estimator": {
+      "email": "estimator@test.com",
+      "roles": ["Estimator", "Employee"], 
+      "accessible_phases": ["Estimation"]
+    },
+    "site_supervisor": {
+      "email": "site.supervisor@test.com",
+      "roles": ["Site Supervisor", "Employee"],
+      "accessible_phases": ["Prework", "Execution"]
+    },
+    "quality_inspector": {
+      "email": "quality.inspector@test.com",
+      "roles": ["Quality Inspector", "Employee"],
+      "accessible_phases": ["Review"]
+    },
+    "billing_clerk": {
+      "email": "billing.clerk@test.com",
+      "roles": ["Billing Clerk", "Employee"],
+      "accessible_phases": ["Invoicing"]
+    },
+    "basic_employee": {
+      "email": "employee@test.com",
+      "roles": ["Employee"],
+      "accessible_phases": []
+    },
+    "client_user": {
+      "email": "client@test.com",
+      "roles": ["Client", "Customer"],
+      "accessible_phases": ["Client Approval", "Review"]
+    }
+  },
+
+  "edge_case_scenarios": {
+    "invalid_data": {
+      "missing_required_fields": {
+        "doctype": "Job Order",
+        "job_title": "Incomplete Job"
+      },
+      "invalid_dates": {
+        "doctype": "Job Order", 
+        "job_title": "Invalid Date Job",
+        "start_date": "2025-02-30",
+        "end_date": "2024-12-31"
+      },
+      "negative_costs": {
+        "doctype": "Job Order",
+        "job_title": "Negative Cost Job",
+        "total_material_cost": -1000.00,
+        "total_labor_cost": -500.00
+      },
+      "extreme_values": {
+        "doctype": "Job Order",
+        "job_title": "Extreme Values Job",
+        "total_material_cost": 999999999.99,
+        "total_labor_hours": 100000.0
+      }
+    },
+
+    "security_test_data": {
+      "sql_injection_attempts": [
+        "'; DROP TABLE `tabJob Order`; --",
+        "1' OR '1'='1",
+        "admin'--",
+        "1; DELETE FROM users; --"
+      ],
+      "xss_attempts": [
+        "<script>alert('XSS')</script>",
+        "javascript:alert('XSS')",
+        "<img src=x onerror=alert('XSS')>",
+        "{{constructor.constructor('alert(1)')()}}"
+      ],
+      "path_traversal_attempts": [
+        "../../../etc/passwd",
+        "..\\..\\..\\windows\\system32\\config\\sam",
+        "/etc/shadow",
+        "C:\\Windows\\System32\\drivers\\etc\\hosts"
+      ]
+    },
+
+    "performance_test_data": {
+      "large_job_orders": {
+        "material_count": 100,
+        "labor_count": 50,
+        "document_count": 25,
+        "team_member_count": 20
+      },
+      "concurrent_operations": {
+        "simultaneous_transitions": 10,
+        "user_count": 5,
+        "operation_count_per_user": 20
+      }
+    }
+  },
+
+  "validation_test_data": {
+    "business_rules_scenarios": [
+      {
+        "scenario": "high_value_job",
+        "conditions": {
+          "total_cost": 50000.00,
+          "expected_actions": ["approval_required:Project Manager", "priority_set:high"]
+        }
+      },
+      {
+        "scenario": "weekend_work", 
+        "conditions": {
+          "start_date": "2025-01-11",
+          "expected_actions": ["approval_required:Site Supervisor", "overtime_notification"]
+        }
+      },
+      {
+        "scenario": "high_risk_work",
+        "conditions": {
+          "risk_level": "High",
+          "expected_actions": ["quality_inspection_required", "safety_review_required"]
+        }
+      },
+      {
+        "scenario": "emergency_job",
+        "conditions": {
+          "priority": "Urgent",
+          "job_type": "Emergency Repair", 
+          "expected_actions": ["expedite_approval", "notify_all_managers"]
+        }
+      }
+    ]
+  }
+}
